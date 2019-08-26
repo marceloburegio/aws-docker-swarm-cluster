@@ -1,5 +1,4 @@
 aws_region = "us-east-1"
-aws_profile = "terraform"
 aws_vpc = {
   name                 = "swarm-lab"
   cidr_block           = "10.0.0.0/20"
