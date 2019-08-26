@@ -1,0 +1,24 @@
+---
+- name: Initial setup on all nodes
+  hosts: all
+  become: yes
+  gather_facts: False
+  roles:
+    - swarm-init
+
+- name: Setup the managers nodes on swarm cluster
+  hosts: swarm_managers
+  become: yes
+  #  gather_facts: False
+  roles:
+    - swarm-manager
+
+- name: Join workers nodes on swarm cluster
+  hosts: swarm_workers
+  become: yes
+  gather_facts: False
+  vars:
+      token: "{{ hostvars[groups['swarm_managers'][0]]['worker_token']['stdout'] }}"
+      manager: "{{ hostvars[groups['swarm_managers'][0]]['ansible_default_ipv4']['address'] }}"
+  roles:
+    - swarm-worker

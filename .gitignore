@@ -1,0 +1,14 @@
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+*.log
+
+.terraform/
+.vagrant/
+
+*.pem
+*.bak
+*gitignore*.tf
+.DS_Store
+.vscode/

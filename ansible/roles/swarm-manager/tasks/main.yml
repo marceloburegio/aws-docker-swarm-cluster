@@ -1,0 +1,10 @@
+- name: Start docker swarm
+  command: docker swarm init --advertise-addr eth0
+
+- name: Get the manager token
+  command: docker swarm join-token manager -q
+  register: manager_token
+
+- name: Get the worker token
+  command: docker swarm join-token worker -q
+  register: worker_token

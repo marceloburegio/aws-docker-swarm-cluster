@@ -1,0 +1,31 @@
+- name: Upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install docker
+  yum:
+    name: docker
+    state: present
+
+- name: Enable and start the docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Copy string to leave a cluster node when Shutdown
+  copy:
+    src: 01SWARMleave
+    dest: /etc/rc.d/rc0.d/01SWARMleave
+    owner: root
+    group: root
+    mode: u+x,g+x,o+x
+
+- name: Create a symbolic link to script for leave cluster when reboot
+  file:
+    src: /etc/rc.d/rc0.d/01SWARMleave
+    dest: /etc/rc.d/rc6.d/01SWARMleave
+    owner: root
+    group: root
+    state: link
