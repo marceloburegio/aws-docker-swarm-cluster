@@ -18,7 +18,9 @@ jobs:
             ip=$(curl -s https://api.ipify.org)
             export TF_VAR_allow_ssh_from=$ip/32
             
-            ssh-keygen -t rsa -b 2048 -f ~/.ssh/mykey.pem -q -P ''
+            ssh-keygen -t rsa -b 2048 -f ~/.ssh/mykey.pem -P ''
+            ls ~/.ssh/mykey.pem
+            ls ~/.ssh/mykey
             
             cd ./terraform/
             terraform init
