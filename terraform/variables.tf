@@ -95,7 +95,7 @@ variable "amis" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key to be provisioned into instances"
-  default     = "~/.ssh/mykey"
+  default     = "~/.ssh/mykey.pem.pub"
 }
 
 variable "ssh_private_key" {
