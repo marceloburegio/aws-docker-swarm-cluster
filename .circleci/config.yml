@@ -11,8 +11,8 @@ jobs:
             sudo apt install -y python-pip locales unzip
             sudo pip install ansible==2.6.5
             curl -L -s https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip -o /tmp/terraform.zip
-            unzip /tmp/terraform.zip -d /usr/local/bin
-            chmod +x /usr/local/bin/terraform
+            sudo unzip /tmp/terraform.zip -d /usr/local/bin
+            sudo chmod +x /usr/local/bin/terraform
             cd ./terraform/
             terraform apply -auto-approve
             cd ../ansible/
