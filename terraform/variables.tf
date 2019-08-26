@@ -4,12 +4,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "aws_profile" {
-  type        = string
-  description = "AWS profile used by AWS CLI"
-  default     = "terraform"
-}
-
 ### NETWORK MODULE
 variable "aws_vpc" {
   description = "Configs to setup the new VPC"
