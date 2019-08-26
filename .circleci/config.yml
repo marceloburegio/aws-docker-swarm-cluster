@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Deploy infrastructure
           command: |
-            sudo apt install -y python-pip unzip
+            sudo apt install -y python-pip
             sudo pip install ansible==2.6.5
             
             curl -L -s https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip -o /tmp/terraform.zip
