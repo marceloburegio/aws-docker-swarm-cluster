@@ -8,13 +8,18 @@ jobs:
       - run:
           name: Deploy infrastructure
           command: |
-            sudo apt install -y python-pip locales unzip
+            sudo apt install -y python2-pip unzip
             sudo pip install ansible==2.6.5
+            
             curl -L -s https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip -o /tmp/terraform.zip
             sudo unzip /tmp/terraform.zip -d /usr/local/bin
             sudo chmod +x /usr/local/bin/terraform
+            
             ip=$(curl -s https://api.ipify.org)
             export TF_VAR_allow_ssh_from=$ip/32
+            
+            ssh-keygen -t rsa -b 2048 -f ~/.ssh/mykey.pem -q -P ''
+            
             cd ./terraform/
             terraform init
             terraform apply -auto-approve
